@@ -8,7 +8,7 @@ function addListeners() {
 		val.onclick = () => {
 			if (val.firstChild.innerHTML == "+") {
 				val.firstChild.innerHTML = "-";
-				val.parentElement.lastElementChild.style.display = "grid";
+				val.parentElement.lastElementChild.style.display = "block";
 			} else {
 				val.firstChild.innerHTML = "+";
 				val.parentElement.lastElementChild.style.display = "none"
@@ -90,6 +90,8 @@ let powers= character => {
 //adding the biography information
 */
 
+
+
 let biographyBlock = document.querySelector("#biography-block");
 let powerBlock = document.querySelector("#power-block");
 let appearanceBlock=document.querySelector("#appearance-block");
@@ -110,14 +112,14 @@ let addCharacterInfo = (character, infoType, addToWhichBlock) => {
 		//some of the properties of informationObject have  values that are arrays.
 		if (typeof informationObject[val] != "object") {
 			let newItem = document.createElement("p");
-			newItem.innerHTML = `${val}: ${informationObject[val]}`
+			newItem.innerHTML = `<span style="color:royalblue;font-weight:bold">${val}</span>: ${informationObject[val]}`
 			addToWhichBlock.appendChild(newItem)
 
 		} else {
 			//changing the array into string using join()
 			let changeToString = informationObject[val].join(", ");
 			let newItem = document.createElement("p");
-			newItem.innerHTML = `${val}: ${changeToString}`;
+			newItem.innerHTML = `<span style="color:royalblue;font-weight:bold">${val}</span>: ${changeToString}`;
 			addToWhichBlock.appendChild(newItem)
 
 		}
@@ -143,6 +145,27 @@ let addNameImg=character => {
 	
 }
 
+//clearing out everything before displaying the whole data about the character.
+let characterContainer=document.querySelector("#character-container");
+
+let showCharacterData=() => {
+	characterContainer.style.display="block";
+	
+	biographyBlock.innerHTML="";
+	powerBlock.innerHTML="";
+	workBlock.innerHTML="";
+	appearanceBlock.innerHTML="";
+	connectionsBlock.innerHTML="";
+	
+	
+	
+	//clear out the entered value
+	inputSearch.value="";
+	
+	//clear out the displayed search results
+	theResults.innerHTML="";
+	
+}
 
 
 //adding eventlisteners to the search results
@@ -152,6 +175,8 @@ function listenSearchResult() {
 	let theCharacter = allResults.find(objVal => {
 		return objVal.id === theID
 	})
+	
+	showCharacterData()
 	
 	//first adding the name and the image
 	addNameImg(theCharacter);
