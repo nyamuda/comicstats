@@ -24,16 +24,22 @@ let theResults = document.querySelector("#the-results");
 let inputSearch = document.querySelector("#input-search");
 let searchButton = document.querySelector("#search-button");
 
+let loader = document.querySelector("#loader");
+
 let allResults = "";
 
 function getHero(name) {
+	//display the loader
+	loader.style.display = "block";
 
-	fetch("https://superheroapi.com/api/2771979009559663/search/" + name)
+	fetch("https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/2771979009559663/search/" + name)
 		.then(result => {
 			return result.json()
 		})
 		.then(data => {
 			allResults = data.results;
+
+			loader.style.display = "none";
 
 			let searchResults = allResults;
 			console.log(searchResults)
@@ -59,6 +65,7 @@ function getHero(name) {
 
 
 }
+
 
 //user clicking the search button
 let inputValue = "";
@@ -94,18 +101,18 @@ let powers= character => {
 
 let biographyBlock = document.querySelector("#biography-block");
 let powerBlock = document.querySelector("#power-block");
-let appearanceBlock=document.querySelector("#appearance-block");
-let workBlock=document.querySelector("#work-block");
-let connectionsBlock=document.querySelector("#connections-block");
+let appearanceBlock = document.querySelector("#appearance-block");
+let workBlock = document.querySelector("#work-block");
+let connectionsBlock = document.querySelector("#connections-block");
 
 
 
 
 let addCharacterInfo = (character, infoType, addToWhichBlock) => {
-	
-	
-	
-	
+
+
+
+
 	let informationObject = character[infoType];
 	for (let val in informationObject) {
 
@@ -132,39 +139,39 @@ let addCharacterInfo = (character, infoType, addToWhichBlock) => {
 }
 
 //the name and image of the character;
-let characterName=document.querySelector("#character-name");
-let characterImg=document.querySelector("#character-img");
+let characterName = document.querySelector("#character-name");
+let characterImg = document.querySelector("#character-img");
 
 
-let addNameImg=character => {
-	let nameOfCharacter=character.name;
-	let imageURL=character.image.url;
-	
-	characterName.innerHTML=nameOfCharacter;
-	characterImg.setAttribute("src",imageURL);
-	
+let addNameImg = character => {
+	let nameOfCharacter = character.name;
+	let imageURL = character.image.url;
+
+	characterName.innerHTML = nameOfCharacter;
+	characterImg.setAttribute("src", imageURL);
+
 }
 
 //clearing out everything before displaying the whole data about the character.
-let characterContainer=document.querySelector("#character-container");
+let characterContainer = document.querySelector("#character-container");
 
-let showCharacterData=() => {
-	characterContainer.style.display="block";
-	
-	biographyBlock.innerHTML="";
-	powerBlock.innerHTML="";
-	workBlock.innerHTML="";
-	appearanceBlock.innerHTML="";
-	connectionsBlock.innerHTML="";
-	
-	
-	
+let showCharacterData = () => {
+	characterContainer.style.display = "block";
+
+	biographyBlock.innerHTML = "";
+	powerBlock.innerHTML = "";
+	workBlock.innerHTML = "";
+	appearanceBlock.innerHTML = "";
+	connectionsBlock.innerHTML = "";
+
+
+
 	//clear out the entered value
-	inputSearch.value="";
-	
+	inputSearch.value = "";
+
 	//clear out the displayed search results
-	theResults.innerHTML="";
-	
+	theResults.innerHTML = "";
+
 }
 
 
@@ -175,18 +182,18 @@ function listenSearchResult() {
 	let theCharacter = allResults.find(objVal => {
 		return objVal.id === theID
 	})
-	
+
 	showCharacterData()
-	
+
 	//first adding the name and the image
 	addNameImg(theCharacter);
 
 	//then adding all the information about the character
-	addCharacterInfo(theCharacter,"powerstats",powerBlock);
-	addCharacterInfo(theCharacter,"biography",biographyBlock);
-	addCharacterInfo(theCharacter,"appearance",appearanceBlock);
-	addCharacterInfo(theCharacter,"work",workBlock);
-	addCharacterInfo(theCharacter,"connections",connectionsBlock);
-	
+	addCharacterInfo(theCharacter, "powerstats", powerBlock);
+	addCharacterInfo(theCharacter, "biography", biographyBlock);
+	addCharacterInfo(theCharacter, "appearance", appearanceBlock);
+	addCharacterInfo(theCharacter, "work", workBlock);
+	addCharacterInfo(theCharacter, "connections", connectionsBlock);
+
 
 }

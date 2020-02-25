@@ -1,9 +1,23 @@
 header {
 	width: 100%;
-	background-color: royalblue;
+	background-color:darkblue;
 	color: white;
 	padding-bottom: 1rem;
 	padding-top: 1rem;
+	text-align:center;
+	font-weight: bold
+}
+#comic-image {
+	max-width: 100%;
+	display: block;
+	height: auto;
+}
+#intro-container {
+	width: 100%
+}
+#intro-text {
+	text-align: center;
+	font-size: 2rem;
 }
 
 .character-head {
@@ -21,31 +35,53 @@ header {
 #character-container {
 	width: 100%;
 	position: relative;
-	top: 10rem;
-	display: none;
+	top:6rem;
+	display:none;
 
 }
 
 #character-img {
 	max-width: 100%;
 	display: block;
-	height: auto;
+	height:auto;
+	margin: auto;
 }
 
 #character-name-image {
 	text-align: center;
 	margin: auto;
+	width: 100%;
 }
 
 #search-block {
 	width: 100%;
 	position: relative;
-	top: 5rem;
+	top:2rem;
 	margin: auto;
 	text-align: center;
-	background-color: grey;
+	background:url("images/images%20(45).jpeg");
 	padding-top: 2rem;
 	padding-bottom: 2rem;
+}
+
+#loader {
+	border: 10px solid lightgray;
+	top:4rem;
+	border-top: 10px solid royalblue;
+	border-radius: 50%;
+	position: relative;
+	width: 60px;
+	height: 60px;
+	animation-name: spin;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	margin: auto;
+	display: none;
+}
+@keyframes spin {
+	0% {transform:rotate(0deg)}
+	100% {transform: rotate(360deg)}
 }
 
 #input-search {
@@ -71,10 +107,12 @@ header {
 	margin: auto;
 	text-align: center;
 	margin-top: 1rem;
+	background-color: rgba(0,0,0,0.5)
+	
 }
 #the-results li {
 	margin-left: -3rem;
-	color: aliceblue;
+	color:white;
 	line-height: 2rem;
 }
 
@@ -85,18 +123,6 @@ header {
 	color: aliceblue;
 }
 
-footer {
-	position: relative;
-	background-color: royalblue;
-	height: auto;
-	color: aliceblue;
-	top:100vh;
-	width:100%;
-	height: 5rem;
-	padding-top: 1rem;
-	text-align: center;
-}
-
 #power-block,
 #connections-block,
 #appearance-block,
@@ -104,4 +130,16 @@ footer {
 #biography-block {
 	text-align: left;
 	line-height: 1.5rem;
+}
+
+footer {
+	position:relative;
+	background-color:darkblue;
+	height: auto;
+	color: aliceblue;
+	width:100%;
+	height: 5rem;
+	padding-top: 1rem;
+	text-align: center;
+	top:50vh;
 }
