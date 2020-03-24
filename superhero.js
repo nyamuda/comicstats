@@ -80,24 +80,9 @@ searchButton.onclick = () => {
 }
 
 
-/*
-
-//adding the powerStats information
-
-let powers= character => {
-	let powerObject=character.powerstats;
-	for(let val in powerObject) {
-		let newItem=document.createElement("p");
-		newItem.innerHTML=`${val}: ${powerObject[val]}`
-		powerBlock.appendChild(newItem)
-	}
-	
-}
-
-//adding the biography information
-*/
 
 
+//ADDING ALL THE INFORMATION ABOUT THE CHARACTER
 
 let biographyBlock = document.querySelector("#biography-block");
 let powerBlock = document.querySelector("#power-block");
@@ -109,11 +94,12 @@ let connectionsBlock = document.querySelector("#connections-block");
 
 
 let addCharacterInfo = (character, infoType, addToWhichBlock) => {
+/*the "character" parameter is an object containing all the information about the selected character. It has the properties such as  id, name, powerstats, appearance etc. Some of these properties have values that are also objects.*/
 
-
-
-
+//getting infomation type e.g powerstats, biography etc
 	let informationObject = character[infoType];
+	
+
 	for (let val in informationObject) {
 
 		//some of the properties of informationObject have  values that are arrays.
@@ -138,7 +124,7 @@ let addCharacterInfo = (character, infoType, addToWhichBlock) => {
 
 }
 
-//the name and image of the character;
+//ADDING THE NAME AND IMAGE OF THE CHARACTER;
 let characterName = document.querySelector("#character-name");
 let characterImg = document.querySelector("#character-img");
 
@@ -152,7 +138,7 @@ let addNameImg = character => {
 
 }
 
-//clearing out everything before displaying the whole data about the character.
+//CLEARING OUT THE THE OLD DATA ABOUT A CHARACTER BEFORE DISPLAYING DATA FOR A NEW CHARACTER
 let characterContainer = document.querySelector("#character-container");
 
 let showCharacterData = () => {
@@ -179,6 +165,8 @@ let showCharacterData = () => {
 function listenSearchResult() {
 
 	let theID = this.id;
+	
+	
 	let theCharacter = allResults.find(objVal => {
 		return objVal.id === theID
 	})
@@ -196,4 +184,59 @@ function listenSearchResult() {
 	addCharacterInfo(theCharacter, "connections", connectionsBlock);
 
 
+}
+
+
+
+
+
+
+window.onload = () => {
+	
+	
+//RANDOMLY DISPLAYING A CHARACTER WHEN THE PAGE IS LOADED
+
+//first generating a random ID between 1 and 731
+
+
+let randomID = (min, max) => {
+	return Math.floor(Math.random() * (max-min +1)) + min;
+	
+						 
+}
+
+//then using the generated ID to search for the character with that ID
+
+
+let randomCharacter = ID => {
+	fetch(`https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/2771979009559663/${ID}`)
+	.then(result => result.json())
+	.then(data => {
+		console.log(data);
+		characterContainer.style.display = "block";
+		
+		// adiing the name and image of the random character
+		
+		addNameImg(data)
+		
+		//adding all the information about the random character
+		
+		addCharacterInfo(data, "powerstats", powerBlock);
+	addCharacterInfo(data, "biography", biographyBlock);
+	addCharacterInfo(data, "appearance", appearanceBlock);
+	addCharacterInfo(data, "work", workBlock);
+	addCharacterInfo(data, "connections", connectionsBlock);
+
+		
+		
+		
+	})
+	.catch(err => {
+		console.log(err)
+	})
+	
+}
+
+randomCharacter(randomID(1,731))
+	
 }

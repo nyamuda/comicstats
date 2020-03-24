@@ -5,7 +5,9 @@ header {
 	padding-bottom: 1rem;
 	padding-top: 1rem;
 	text-align:center;
-	font-weight: bold
+	font-weight: bold;
+	height: 3rem;
+	font-size: 1.5rem;
 }
 #comic-image {
 	max-width: 100%;
