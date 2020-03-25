@@ -30,7 +30,7 @@ let allResults = "";
 
 function getHero(name) {
 	//display the loader
-	loader.style.display = "block";
+	loader.style.visibility = "visible";
 
 	fetch("https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/2771979009559663/search/" + name)
 		.then(result => {
@@ -39,7 +39,7 @@ function getHero(name) {
 		.then(data => {
 			allResults = data.results;
 
-			loader.style.display = "none";
+			loader.style.visibility = "hidden";
 
 			let searchResults = allResults;
 			console.log(searchResults)
@@ -72,9 +72,10 @@ let inputValue = "";
 inputSearch.oninput = () => {
 	inputValue = inputSearch.value;
 }
-searchButton.onclick = () => {
+searchButton.onclick = (event) => {
 	if (inputValue != "") {
 		getHero(inputValue);
+		event.preventDefault()
 	}
 
 }
@@ -240,3 +241,25 @@ let randomCharacter = ID => {
 randomCharacter(randomID(1,731))
 	
 }
+
+
+
+//RANDOMLY SHOWING THE INTRODUCTION BACKGROUND IMAGES
+let comicImage=document.querySelector("#comic-image");
+
+let randomNum= (min, max) => {
+	return Math.floor(Math.random() * (max-min +1)) + min;
+	
+						 
+}
+
+let randomImage = () => {
+	setInterval(() => {
+		let num=randomNum(5,10);
+		comicImage.src=`image/img%20(${num}).jpg`;
+		
+	},60000)
+	
+}
+
+randomImage();

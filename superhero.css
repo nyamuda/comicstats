@@ -1,26 +1,50 @@
-header {
-	width: 100%;
-	background-color:darkblue;
+body {
+	background-color: #121212;
 	color: white;
+}
+
+header {
+	width: 98%;
+	background-color: darkblue;
 	padding-bottom: 1rem;
 	padding-top: 1rem;
-	text-align:center;
-	font-weight: bold;
-	height: 3rem;
-	font-size: 1.5rem;
+	text-align: center;
+	margin: auto;
+	border-bottom-left-radius: 20px;
+	border-top-right-radius: 20px;
+
 }
+
+header p {
+	font-size: 1.5rem;
+	color: white;
+	font-weight: bold;
+
+}
+
 #comic-image {
 	max-width: 100%;
 	display: block;
 	height: auto;
+	position: relative;
+	top: 1rem;
+	margin: auto;
 }
+
 #intro-container {
-	width: 100%
+	width: 100%;
+	position: relative;
+	top: 2rem;
 }
+
 #intro-text {
 	text-align: center;
-	font-size: 2rem;
+	font-size: 1.5rem;
+	width: 98%;
+	margin: auto;
+
 }
+
 
 .character-head {
 	margin-left: 1rem;
@@ -37,15 +61,15 @@ header {
 #character-container {
 	width: 100%;
 	position: relative;
-	top:6rem;
-	display:none;
+	top: 7rem;
+	display: none;
 
 }
 
 #character-img {
-	max-width: 100%;
+	width:auto;
 	display: block;
-	height:auto;
+	height:20rem;
 	margin: auto;
 }
 
@@ -58,17 +82,18 @@ header {
 #search-block {
 	width: 100%;
 	position: relative;
-	top:2rem;
+	top: 4rem;
 	margin: auto;
 	text-align: center;
-	background:url("images/images%20(45).jpeg");
+	background: url("image/img%20(4).jpg");
 	padding-top: 2rem;
 	padding-bottom: 2rem;
+	height: auto;
 }
 
 #loader {
 	border: 10px solid lightgray;
-	top:4rem;
+	top: 5rem;
 	border-top: 10px solid royalblue;
 	border-radius: 50%;
 	position: relative;
@@ -79,29 +104,42 @@ header {
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	margin: auto;
-	display: none;
+	display:block;
+	visibility: hidden;
 }
+
 @keyframes spin {
-	0% {transform:rotate(0deg)}
-	100% {transform: rotate(360deg)}
+	0% {
+		transform: rotate(0deg)
+	}
+
+	100% {
+		transform: rotate(360deg)
+	}
 }
 
 #input-search {
 	border: none;
 	border-radius: 10px;
-	height: 1.6rem;
-	width: 15rem;
+	height: 2rem;
+	width: 70%;
 	text-indent: 1rem;
 }
 
 #search-button {
 	border-radius: 10px;
-	height: 1.8rem;
+	height: 2.2rem;
 	width: 5rem;
 	margin-left: -1.5rem;
 	background-color: royalblue;
 	color: aliceblue;
+	transition: all 0.5s ease-in-out;
+	cursor: pointer;
 
+}
+
+#search-button:hover {
+	background-color: darkblue;
 }
 
 #the-results {
@@ -109,12 +147,13 @@ header {
 	margin: auto;
 	text-align: center;
 	margin-top: 1rem;
-	background-color: rgba(0,0,0,0.5)
-	
+	background-color: rgba(0, 0, 0, 0.5);
+	column-count: 3;
 }
+
 #the-results li {
 	margin-left: -3rem;
-	color:white;
+	color: white;
 	line-height: 2rem;
 }
 
@@ -135,13 +174,90 @@ header {
 }
 
 footer {
-	position:relative;
-	background-color:darkblue;
-	height: auto;
+	position: relative;
+	background-color: darkblue;
 	color: aliceblue;
-	width:100%;
+	width: 100%;
 	height: 5rem;
 	padding-top: 1rem;
+	padding-bottom: 1rem;
 	text-align: center;
-	top:50vh;
+	top:11rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+
+@media (min-width:768px) {
+	main {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		width: 100%;
+		height: auto;
+		top: 3rem;
+		
+
+	}
+
+	#intro-container {
+		border: 1px solid red;
+		top: 0rem;
+		
+	}
+
+	#search-block {
+
+		border: 1px solid red;
+		top: -3rem;
+		
+
+	}
+
+	#loader {
+		display: block;
+		top: -8rem;
+		visibility: hidden;
+	}
+
+	#character-container {
+		border: 1px solid red;
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		top: 0rem;
+		
+
+	}
+
+	#character-img {
+		max-width:35%;
+	}
+	#character-name-image {
+		display: block;
+		border: 1px solid red;
+	}
+	.info-blocks {
+		
+	}
+	#all-information {
+		
+	}
+	#character-search {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		width: 30%;
+		height: 40rem;
+		justify-content:space-between;
+		top: 0rem;
+		border: 1px solid red;
+	}
+	footer {
+		top:15rem;
+	}
+
 }
