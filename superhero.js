@@ -3,6 +3,7 @@ let characterDescription = document.querySelectorAll(".character-description");
 let headCollapse = document.querySelectorAll(".collapse-head");
 
 
+//THE COLLAPSE BUTTON EVENT LISTENER
 function addListeners() {
 	for (let val of characterHeading) {
 		val.onclick = () => {
@@ -20,13 +21,24 @@ function addListeners() {
 addListeners();
 
 
+
+//FETCHING DATA THAT THE USER SEARCHES FOR
+
 let theResults = document.querySelector("#the-results");
 let inputSearch = document.querySelector("#input-search");
 let searchButton = document.querySelector("#search-button");
 
+let infoAboutTheCharacter = document.querySelector("#all-information");
+
+let searchPage = document.querySelector("#page-list");
+
+let arrowsBlock = document.querySelector("#arrows-block");
+
 let loader = document.querySelector("#loader");
 
 let allResults = "";
+
+let allSearchedResultsList = [];
 
 function getHero(name) {
 	//display the loader
@@ -49,13 +61,40 @@ function getHero(name) {
 				possibleResult.innerHTML = val.name;
 				possibleResult.setAttribute("id", val.id);
 				possibleResult.addEventListener("click", listenSearchResult);
-				theResults.appendChild(possibleResult);
+
+				allSearchedResultsList.push(possibleResult);
+
+
 
 			})
 
-			console.log(theResults)
+			console.log(theResults);
 
-			//
+			groupSearchedResults()
+
+			console.log(allSearchedResultsList)
+
+			console.log(firstSearchPage);
+
+
+			console.log(fifthSearchPage);
+
+			firstSearchPage.forEach(val => {
+
+				theResults.appendChild(val);
+
+
+
+			})
+
+			arrowsBlock.style.visibility = "visible";
+
+			searchPage.innerText = "Page 1";
+
+			previousArrow.style.color = "grey";
+		nextArrow.style.color="white";
+
+
 
 
 		})
@@ -66,6 +105,170 @@ function getHero(name) {
 
 }
 
+//GROUP THE LISTED SEARCH RESULTS INTO ONLY 5 PAGES
+
+let firstSearchPage = "";
+
+let secondSearchPage = "";
+
+let thirdSearchPage = "";
+let forthSearchPage = "";
+let fifthSearchPage = "";
+
+let groupSearchedResults = () => {
+	for (var i = 0; i < allSearchedResultsList.length; i++) {
+
+		allSearchedResultsList[i].classList.add(`${i}`);
+
+
+	}
+
+	firstSearchPage = allSearchedResultsList.filter(val => val.classList < 10);
+
+	secondSearchPage = allSearchedResultsList.filter(val => val.classList >= 10 && val.classList < 20);
+
+	thirdSearchPage = allSearchedResultsList.filter(val => val.classList >= 20 && val.classList < 30);
+
+	forthSearchPage = allSearchedResultsList.filter(val => val.classList >= 30 && val.classList < 40);
+
+	fifthSearchPage = allSearchedResultsList.filter(val => val.classList >= 40 && val.classList < 50);
+
+}
+
+let nextArrow = document.querySelector("#next-arrow");
+let previousArrow = document.querySelector("#previous-arrow");
+
+nextArrow.addEventListener("click", () => {
+
+	if (secondSearchPage.length > 0 && searchPage.innerText === "Page 1") {
+
+		//clearing out the first page displayed search results
+		theResults.innerHTML = "";
+
+		//adding the second page search results
+		secondSearchPage.forEach(val => {
+
+			theResults.appendChild(val);
+
+
+
+		})
+
+		searchPage.innerText = "Page 2";
+
+		previousArrow.style.color = "white";
+	} else if (thirdSearchPage.length > 0 && searchPage.innerText === "Page 2") {
+		theResults.innerHTML = "";
+
+		//adding the second page search results
+		thirdSearchPage.forEach(val => {
+
+			theResults.appendChild(val);
+
+
+
+		})
+
+		searchPage.innerText = "Page 3"
+
+
+	} else if (forthSearchPage.length > 0 && searchPage.innerText === "Page 3") {
+		theResults.innerHTML = "";
+
+		//adding the second page search results
+		forthSearchPage.forEach(val => {
+
+			theResults.appendChild(val);
+
+
+
+		})
+
+		searchPage.innerText = "Page 4"
+
+
+	} else if (fifthSearchPage.length > 0 && searchPage.innerText === "Page 4") {
+		theResults.innerHTML = "";
+
+		//adding the second page search results
+		fifthSearchPage.forEach(val => {
+
+			theResults.appendChild(val);
+
+
+
+		})
+
+		searchPage.innerText = "Page 5";
+		nextArrow.style.color = "grey"
+	}
+
+})
+
+
+
+previousArrow.addEventListener("click", () => {
+
+	if (searchPage.innerText === "Page 5") {
+
+		theResults.innerHTML = "";
+
+		forthSearchPage.forEach(val => {
+
+			theResults.appendChild(val);
+
+		})
+
+		searchPage.innerText = "Page 4";
+		nextArrow.style.color = "white";
+	} else if (searchPage.innerText === "Page 4") {
+
+		theResults.innerHTML = "";
+
+		thirdSearchPage.forEach(val => {
+
+			theResults.appendChild(val);
+
+
+
+		})
+
+		searchPage.innerText = "Page 3"
+	} else if (searchPage.innerText === "Page 3") {
+
+		theResults.innerHTML = "";
+
+		secondSearchPage.forEach(val => {
+
+			theResults.appendChild(val);
+
+
+
+		})
+
+		searchPage.innerText = "Page 2"
+	} else {
+
+		theResults.innerHTML = "";
+
+		firstSearchPage.forEach(val => {
+
+			theResults.appendChild(val);
+
+
+
+		})
+
+		searchPage.innerText = "Page 1";
+
+		previousArrow.style.color = "grey";
+	}
+})
+
+
+
+
+
 
 //user clicking the search button
 let inputValue = "";
@@ -73,8 +276,22 @@ inputSearch.oninput = () => {
 	inputValue = inputSearch.value;
 }
 searchButton.onclick = (event) => {
+
 	if (inputValue != "") {
+		firstSearchPage = "";
+
+		secondSearchPage = "";
+
+		theResults.innerHTML = "";
+
+		allSearchedResultsList = [];
+
+		arrowsBlock.style.visibility = "hidden";
+
 		getHero(inputValue);
+
+		inputSearch.value = "";
+
 		event.preventDefault()
 	}
 
@@ -95,11 +312,11 @@ let connectionsBlock = document.querySelector("#connections-block");
 
 
 let addCharacterInfo = (character, infoType, addToWhichBlock) => {
-/*the "character" parameter is an object containing all the information about the selected character. It has the properties such as  id, name, powerstats, appearance etc. Some of these properties have values that are also objects.*/
+	/*the "character" parameter is an object containing all the information about the selected character. It has the properties such as  id, name, powerstats, appearance etc. Some of these properties have values that are also objects.*/
 
-//getting infomation type e.g powerstats, biography etc
+	//getting infomation type e.g powerstats, biography etc
 	let informationObject = character[infoType];
-	
+
 
 	for (let val in informationObject) {
 
@@ -159,6 +376,10 @@ let showCharacterData = () => {
 	//clear out the displayed search results
 	theResults.innerHTML = "";
 
+	firstSearchPage = "";
+
+	secondSearchPage = "";
+
 }
 
 
@@ -166,11 +387,13 @@ let showCharacterData = () => {
 function listenSearchResult() {
 
 	let theID = this.id;
-	
-	
+
+
 	let theCharacter = allResults.find(objVal => {
 		return objVal.id === theID
 	})
+
+	arrowsBlock.style.visibility = "hidden";
 
 	showCharacterData()
 
@@ -193,73 +416,76 @@ function listenSearchResult() {
 
 
 window.onload = () => {
-	
-	
-//RANDOMLY DISPLAYING A CHARACTER WHEN THE PAGE IS LOADED
-
-//first generating a random ID between 1 and 731
 
 
-let randomID = (min, max) => {
-	return Math.floor(Math.random() * (max-min +1)) + min;
-	
-						 
-}
+	//RANDOMLY DISPLAYING A CHARACTER WHEN THE PAGE IS LOADED
 
-//then using the generated ID to search for the character with that ID
+	//first generating a random ID between 1 and 731
 
 
-let randomCharacter = ID => {
-	fetch(`https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/2771979009559663/${ID}`)
-	.then(result => result.json())
-	.then(data => {
-		console.log(data);
-		characterContainer.style.display = "block";
-		
-		// adiing the name and image of the random character
-		
-		addNameImg(data)
-		
-		//adding all the information about the random character
-		
-		addCharacterInfo(data, "powerstats", powerBlock);
-	addCharacterInfo(data, "biography", biographyBlock);
-	addCharacterInfo(data, "appearance", appearanceBlock);
-	addCharacterInfo(data, "work", workBlock);
-	addCharacterInfo(data, "connections", connectionsBlock);
+	let randomID = (min, max) => {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
 
-		
-		
-		
-	})
-	.catch(err => {
-		console.log(err)
-	})
-	
-}
 
-randomCharacter(randomID(1,731))
-	
+	}
+
+	//then using the generated ID to search for the character with that ID
+
+
+	let randomCharacter = ID => {
+		fetch(`https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/2771979009559663/${ID}`)
+			.then(result => result.json())
+			.then(data => {
+				console.log(data);
+				characterContainer.style.visibility = "visible";
+
+				// adding the name and image of the random character
+
+				addNameImg(data)
+
+				//adding all the information about the random character
+
+				addCharacterInfo(data, "powerstats", powerBlock);
+				addCharacterInfo(data, "biography", biographyBlock);
+				addCharacterInfo(data, "appearance", appearanceBlock);
+				addCharacterInfo(data, "work", workBlock);
+				addCharacterInfo(data, "connections", connectionsBlock);
+
+
+				infoAboutTheCharacter.style.visibility = "visible"
+
+
+
+
+			})
+			.catch(err => {
+				console.log(err)
+			})
+
+	}
+
+	randomCharacter(randomID(1, 731))
+
 }
 
 
 
 //RANDOMLY SHOWING THE INTRODUCTION BACKGROUND IMAGES
-let comicImage=document.querySelector("#comic-image");
+let comicImage = document.querySelector("#comic-image");
 
-let randomNum= (min, max) => {
-	return Math.floor(Math.random() * (max-min +1)) + min;
-	
-						 
+let randomNum = (min, max) => {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+
+
 }
 
 let randomImage = () => {
 	setInterval(() => {
-		let num=randomNum(5,10);
-		comicImage.src=`image/img%20(${num}).jpg`;
-		
-	},60000)
-	
+		let num = randomNum(5, 10);
+		comicImage.src = `image/img%20(${num}).jpg`;
+
+	}, 60000)
+
 }
 
 randomImage();

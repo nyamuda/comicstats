@@ -5,7 +5,7 @@ body {
 
 header {
 	width: 98%;
-	background-color: darkblue;
+	background-color: darkslateblue;
 	padding-bottom: 1rem;
 	padding-top: 1rem;
 	text-align: center;
@@ -48,6 +48,10 @@ header p {
 
 .character-head {
 	margin-left: 1rem;
+	cursor: pointer;
+}
+.desktop-lines {
+	display: none;
 }
 
 .character-description {
@@ -62,9 +66,15 @@ header p {
 	width: 100%;
 	position: relative;
 	top: 7rem;
-	display: none;
+	display:block;
+	visibility: none;
 
 }
+
+#all-information {
+		visibility:hidden;
+		
+	}
 
 #character-img {
 	width:auto;
@@ -124,6 +134,7 @@ header p {
 	height: 2rem;
 	width: 70%;
 	text-indent: 1rem;
+	
 }
 
 #search-button {
@@ -148,13 +159,42 @@ header p {
 	text-align: center;
 	margin-top: 1rem;
 	background-color: rgba(0, 0, 0, 0.5);
-	column-count: 3;
+	column-count: 2;
 }
+
+#arrows-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	visibility: hidden;
+	background-color: rgba(0,0,0,0.5)
+}
+
+#previous-arrow, #next-arrow {
+	font-size:1.5rem;
+	cursor: pointer;
+}
+
+#next-arrow:hover {
+	color: darkslateblue;
+	
+}
+#previous-arrow:hover {
+	color: darkslateblue;
+}
+
+
 
 #the-results li {
 	margin-left: -3rem;
 	color: white;
 	line-height: 2rem;
+	cursor: pointer;
+}
+#the-results li:hover {
+	color: darkslateblue;
+	text-decoration: underline;
 }
 
 
@@ -175,7 +215,7 @@ header p {
 
 footer {
 	position: relative;
-	background-color: darkblue;
+	background-color:darkslateblue;
 	color: aliceblue;
 	width: 100%;
 	height: 5rem;
@@ -191,6 +231,10 @@ footer {
 
 
 @media (min-width:768px) {
+	body {
+		background-color:white;
+		
+	}
 	main {
 		position: relative;
 		display: flex;
@@ -199,32 +243,45 @@ footer {
 		width: 100%;
 		height: auto;
 		top: 3rem;
+		background-color:rgba(32,32,32,0.9);
+		padding-bottom: 2rem;
+		padding-top: 2rem;
 		
 
 	}
 
 	#intro-container {
-		border: 1px solid red;
 		top: 0rem;
 		
 	}
+	#intro-text {
+	}
+	
+	#comic-image {
+		width:80%;
+		margin: auto;
+	}
 
 	#search-block {
-
-		border: 1px solid red;
-		top: -3rem;
+		top: -1rem;
+		background: none;
+		height: 12rem;
 		
 
+	}
+	#input-search {
+	}
+	#the-results {
+		background-color: inherit;
 	}
 
 	#loader {
 		display: block;
 		top: -8rem;
-		visibility: hidden;
+		visibility:hidden;
 	}
 
 	#character-container {
-		border: 1px solid red;
 		display: flex;
 		flex-direction: column;
 		width: 50%;
@@ -234,16 +291,32 @@ footer {
 	}
 
 	#character-img {
-		max-width:35%;
+		max-width:45%;
 	}
 	#character-name-image {
 		display: block;
-		border: 1px solid red;
 	}
 	.info-blocks {
+		background-color:inherit;
+		border:none;
+		margin-top: 0.5rem;
 		
 	}
+	.desktop-lines {
+		display: block;
+	}
+	.character-head span {
+		display: none;
+	}
+	
+	.character-head {
+		font-size: 1.5rem;
+	}
+	.character-description {
+		display: block;
+	}
 	#all-information {
+		
 		
 	}
 	#character-search {
@@ -251,13 +324,17 @@ footer {
 		display: flex;
 		flex-direction: column;
 		width: 30%;
-		height: 40rem;
+		height: 30rem;
 		justify-content:space-between;
 		top: 0rem;
-		border: 1px solid red;
+		padding: 1rem;
+		background-color:;
+		border-radius: 10px;
+		border: 1px solid;
+		box-shadow: -4px -4px 3px 3px white;
 	}
 	footer {
-		top:15rem;
+		top:11rem;
 	}
 
 }
