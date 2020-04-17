@@ -556,7 +556,7 @@ let comicImage2=document.querySelector("#tablet-image-container");
 
 let randomImage2= () => {
 	setInterval(() => {
-		let num=randomNum(1,5);
+		let num=randomNum(1,6);
 		comicImage2.style.background=`url("tablet-images/img%20(${num}).jpg")`
 	},20000)
 }
