@@ -1,6 +1,6 @@
 body {
 	background-color: #121212;
-	color: white;
+	color:aliceblue;
 	font-family: 'Acme', sans-serif;
 }
 
@@ -24,13 +24,13 @@ header {
 	height: 3rem;
 	line-height: 50px;
 	background-color: #222;
-	color: white;
+	color:aliceblue;
 	text-align: center;
 }
 
 header p {
 	font-size: 1.5rem;
-	color: white;
+	color: aliceblue;
 	font-weight: bold;
 	margin: auto;
 
@@ -39,19 +39,20 @@ header p {
 #mobile-image-container {
 	max-width: 98%;
 	position: relative;
-	top:0rem;
+	top: 0rem;
 	min-height: 15rem;
 	margin: auto;
 }
 
-#intro-image-container  {
-	max-width:100%;
+#intro-image-container {
+	max-width: 100%;
 	display: block;
 	height: auto;
-	
+
 }
 
-#tablet-image-container, #intro-image-container2 {
+#tablet-image-container,
+#intro-image-container2 {
 	display: none;
 }
 
@@ -89,12 +90,12 @@ header p {
 .border {
 	display: flex;
 	flex-direction: column;
-	justify-content:space-evenly;
+	justify-content: space-evenly;
 	position: relative;
 	margin: auto;
 	width: 90%;
-	height:8rem;
-	top: 7rem;
+	height: 8rem;
+	top: 6rem;
 	background: linear-gradient(90deg, #FFFAFA 50%, transparent 50%), linear-gradient(90deg, #FFFAFA 50%, transparent 50%), linear-gradient(0deg, #FFFAFA 50%, transparent 50%), linear-gradient(0deg, #FFFAFA 50%, transparent 50%);
 	background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
 	background-size: 15px 4px, 15px 4px, 4px 15px, 4px 15px;
@@ -119,13 +120,13 @@ header p {
 #intro-container {
 	width: 100%;
 	position: relative;
-	top: 2rem;
+	top:1rem;
 }
 
 #intro-text {
 	text-align: center;
 	font-size: 1.5rem;
-	width: 98%;
+	width: 95%;
 	margin: auto;
 }
 
@@ -150,7 +151,7 @@ header p {
 #character-container {
 	width: 100%;
 	position: relative;
-	top: 9rem;
+	top: 10rem;
 	display: block;
 	visibility: none;
 
@@ -177,18 +178,19 @@ header p {
 #search-block {
 	width: 100%;
 	position: relative;
-	top: 9rem;
 	margin: auto;
 	text-align: center;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	height: 10rem;
-	;
+	height: 17rem;
+	top: 12rem;
+	border:none;
+	background-color: rgba(32, 32, 32, 1);
 }
 
 #loader {
 	border: 10px solid lightgray;
-	top: 1rem;
+	top: -1rem;
 	border-top: 10px solid royalblue;
 	border-radius: 50%;
 	position: relative;
@@ -242,7 +244,7 @@ header p {
 	margin: auto;
 	text-align: center;
 	margin-top: 1rem;
-	background-color:;
+	background-color: ;
 	column-count: 2;
 	height: 100%;
 }
@@ -257,7 +259,9 @@ header p {
 	justify-content: space-evenly;
 	align-items: center;
 	visibility: hidden;
-	background-color: rgba(0, 0, 0, 0.5)
+	background-color: rgba(0, 0, 0, 0.5);
+	position: relative;
+	top: -6rem;
 }
 
 #previous-arrow,
@@ -279,21 +283,24 @@ header p {
 
 #the-results li {
 	margin-left: -3rem;
-	color: white;
+	color: aliceblue;
 	line-height: 2rem;
 	cursor: pointer;
 }
 
 #the-results li:hover {
-	color:rgba(0, 255, 255, 1);
+	color: rgba(0, 255, 255, 1);
 	text-decoration: underline;
 }
 
 
+
 .info-blocks {
-	border: 1px solid;
+	border-bottom:groove;
+
 	background-color: rgba(32, 32, 32, 0.9);
 	color: aliceblue;
+	padding-top:0.5rem;
 }
 
 #power-block,
@@ -313,13 +320,11 @@ footer {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	text-align: center;
-	top:1rem;
+	top: 12rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	border-top: 2px dotted rgba(0, 255, 255,0.8);
-	border-bottom: 2px dotted rgba(0, 255, 255,0.8);
 }
 
 
@@ -364,7 +369,7 @@ footer {
 	}
 
 
-	
+
 
 
 	#mobile-image-container {
@@ -393,10 +398,10 @@ footer {
 	.border {
 		display: block;
 		position: absolute;
-		top:14rem;
+		top: 14rem;
 		width: 24rem;
 		background: none;
-		left: 2rem;
+		left: 5rem;
 	}
 
 	#comic-quotes {
@@ -404,31 +409,48 @@ footer {
 		font-size: 1.5rem;
 
 	}
-	
+
 	#intro-text {
-		width: 80%;
+		width: 70%;
 		text-align: center;
 	}
-	
+
 	#search-block {
 		width: 70%;
+		position: relative;
+		top: 6rem;
+		border: groove;
+		background-color: rgba(32, 32, 32, 1);
+		height: 17rem;
+		border-color: silver;
 	}
-	
+
+	#loader {
+		top: -7rem;
+	}
+
+	#arrows-block {
+		top: -6rem;
+	}
+
 	#character-container {
 		width: 70%;
 		margin: auto;
+		top:7rem;
 	}
+
 	.info-blocks {
 		background-color: inherit;
 		border: none;
 		margin-top: 0.5rem;
 
 	}
+
 	.desktop-lines {
 		display: block;
 	}
 
-	
+
 }
 
 
@@ -457,7 +479,7 @@ footer {
 		height: 3rem;
 		line-height: 50px;
 		background-color: #222;
-		color: white;
+		color: aliceblue;
 		text-align: center;
 	}
 
@@ -498,22 +520,27 @@ footer {
 		display: block;
 		position: relative;
 		top: -1rem;
-		background: url("desktop-images/img (5).jpg");
+		background: url("desktop-images/img (18).jpg");
 		max-height: 40rem;
 		width: 98%;
 		margin: auto;
+	}
+
+	#intro-text {
+		width: 95%;
 	}
 
 	.border {
 		display: block;
 		position: absolute;
 		top: -40rem;
-		width: 23rem;
+		width: 27rem;
 		background: none;
+		left: 5rem;
 	}
 
 	#comic-quotes {
-		color: white;
+		color: aliceblue;
 		font-size: 1.5rem;
 
 	}
@@ -535,9 +562,14 @@ footer {
 
 
 	}
+	
+	#arrows-block {
+		top:0rem;
+	}
+
 
 	#input-search {
-		width: 20rem;
+		width: 70%;
 	}
 
 	#the-results {
@@ -546,17 +578,15 @@ footer {
 
 	#loader {
 		display: block;
-		top: -8rem;
+		top: -9rem;
 		visibility: hidden;
 	}
 
 	#character-container {
 		display: flex;
 		flex-direction: column;
-		width: 50%;
+		width: 60%;
 		top: 0rem;
-
-
 	}
 
 	#character-img {
@@ -590,20 +620,18 @@ footer {
 		display: block;
 	}
 
-	#all-information {};
 
-	#character-search {
+	#character-searching {
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		width: 30%;
-		height: 32rem;
+		height: 35rem;
 		justify-content: space-between;
 		top: 0rem;
 		padding: 1rem;
-		background-color:;
-		border-radius: 10px;
-		border: 2px solid white;
+		border-radius: 5px;
+		border: 1px solid aliceblue;
 	}
 
 	footer {

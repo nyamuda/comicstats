@@ -89,6 +89,10 @@ function getHero(name) {
 			nextArrow.style.color = "grey";
 
 			colorOfFirstPageArrow();
+		
+		//removing the 'results not found error' in case it was already there
+		
+		noSearchResultsFound.innerHTML="";
 
 
 
@@ -97,7 +101,8 @@ function getHero(name) {
 			console.log(err);
 		noSearchResultsFound.style.display="block";
 		loader.style.visibility = "hidden";
-		noSearchResultsFound.innerHTML="Sorry, no search results found."
+		//showing that the searched results were not found
+		noSearchResultsFound.innerHTML="Sorry, no search results found.";
 		})
 
 
@@ -539,33 +544,41 @@ let randomImage = () => {
 		let num = randomNum(1, 10);
 		comicImage.src= `image/img%20(${num}).jpg`;
 
-	}, 5000)
+	}, 10000)
 
 }
 
 randomImage();
 
+//tablet
+
+let comicImage2=document.querySelector("#tablet-image-container");
+
+let randomImage2= () => {
+	setInterval(() => {
+		let num=randomNum(1,5);
+		comicImage2.style.background=`url("tablet-images/img%20(${num}).jpg")`
+	},20000)
+}
+
+randomImage2()
+
 //for desktop
 
-let comicImage2 = document.querySelector("#intro-image-container2");
-
-let randomNum2 = (min, max) => {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+let comicImage3 = document.querySelector("#intro-image-container2");
 
 
-};
-
-let randomImage2 = () => {
+let randomImage3 = () => {
 	setInterval(() => {
-		let num = randomNum(1, 16);
-		comicImage2.style.background= `url("desktop-images/img (${num}).jpg")`;
+		let num = randomNum(1, 18);
+		comicImage3.style.background= `url("desktop-images/img (${num}).jpg")`;
 
-	}, 30000)
+	}, 20000)
 
 }
 
 
-randomImage2();
+randomImage3();
 
 
 
@@ -576,11 +589,10 @@ randomImage2();
 
 
 
-
 let counter = 0;
 
 
-let arrayOfQuotes=['“Our actions have reactions...consequences...things we can never take back.” – Batwoman','“It’s not who I am underneath, but what I do that defines me.” – Batman','“You don’t always need a plan. Sometimes you just need to breathe, trust, let go and see what happens.” – The Joker',' “Everyone’s fighting their own battles, just as you are fighting yours.”  – Wonder Woman','“If there is nothing but what we make in this world, brothers…let us make it good.” – Beta Ray Bill','“If you make yourself more than just a man, if you devote yourself to an ideal, and if they can’t stop you, then you become something else entirely.” – Ra’s Al Ghul',' “With great power, comes great responsibility.” – Spiderman',' “Heroes are made by the path they choose, not the powers they are graced with.”– Iron Man',' “Intelligence is a privilege, and it needs to be used for the greater good of people.”– Dr. Octopus','“I think a hero is an ordinary individual who finds strength to persevere and endure in spite of overwhelming obstacles.” –Superman',' “Life doesn’t give us purpose. We give life purpose.” – The Flash',' “I know what it’s like. To not live up to expectations. To feel like nothing that you do will ever be good enough.” – Green Lantern',' “Just because someone stumbles and loses their path, doesn’t mean they can’t be saved.”– Professor Charles Xavier','“No Matter how bad things get, something good is out there, over the horizon.” – Green Lantern','“I stayed in and studied like a good little nerd. And fifteen years later, I’m one of the greatest minds of the 21st century.” – Mister Fantastic'];
+let arrayOfQuotes=['“A single individual who has the right heart and the right mind, that is consumed with a single purpose... that one man can win a war.” – Captain America','“Our actions have reactions...consequences...things we can never take back.” – Batwoman','“It’s not who I am underneath, but what I do that defines me.” – Batman','“You don’t always need a plan. Sometimes you just need to breathe, trust, let go and see what happens.” – The Joker',' “Everyone’s fighting their own battles, just as you are fighting yours.”  – Wonder Woman','“If there is nothing but what we make in this world, brothers…let us make it good.” – Beta Ray Bill','“If you make yourself more than just a man, if you devote yourself to an ideal, and if they can’t stop you, then you become something else entirely.” – Ra’s Al Ghul',' “With great power, comes great responsibility.” – Spiderman',' “Heroes are made by the path they choose, not the powers they are graced with.”– Iron Man',' “Intelligence is a privilege, and it needs to be used for the greater good of people.”– Dr. Octopus','“I think a hero is an ordinary individual who finds strength to persevere and endure in spite of overwhelming obstacles.” –Superman',' “Life doesn’t give us purpose. We give life purpose.” – The Flash',' “I know what it’s like. To not live up to expectations. To feel like nothing that you do will ever be good enough.” – Green Lantern',' “Just because someone stumbles and loses their path, doesn’t mean they can’t be saved.”– Professor Charles Xavier','“No Matter how bad things get, something good is out there, over the horizon.” – Green Lantern','“I stayed in and studied like a good little nerd. And fifteen years later, I’m one of the greatest minds of the 21st century.” – Mister Fantastic'];
 
 let quote="";
 
@@ -622,7 +634,6 @@ let selectQuote =()=> {
 		},12000)
 	}
 }
-
 
 
 selectQuote();
