@@ -40,6 +40,8 @@ let allResults = "";
 
 let allSearchedResultsList = [];
 
+let noSearchResultsFound=document.querySelector("#no-search-results");
+
 function getHero(name) {
 	//display the loader
 	loader.style.visibility = "visible";
@@ -54,7 +56,6 @@ function getHero(name) {
 			loader.style.visibility = "hidden";
 
 			let searchResults = allResults;
-			console.log(searchResults)
 			//searchResults is an array of objects
 			searchResults.forEach(val => {
 				let possibleResult = document.createElement("li");
@@ -68,16 +69,9 @@ function getHero(name) {
 
 			})
 
-			console.log(theResults);
 
 			groupSearchedResults()
 
-			console.log(allSearchedResultsList)
-
-			console.log(firstSearchPage);
-
-
-			console.log(fifthSearchPage);
 
 			firstSearchPage.forEach(val => {
 
@@ -92,14 +86,18 @@ function getHero(name) {
 			searchPage.innerText = "Page 1";
 
 			previousArrow.style.color = "grey";
-		nextArrow.style.color="white";
+			nextArrow.style.color = "grey";
 
+			colorOfFirstPageArrow();
 
 
 
 		})
 		.catch(err => {
-			console.log(err)
+			console.log(err);
+		noSearchResultsFound.style.display="block";
+		loader.style.visibility = "hidden";
+		noSearchResultsFound.innerHTML="Sorry, no search results found."
 		})
 
 
@@ -135,6 +133,30 @@ let groupSearchedResults = () => {
 
 }
 
+//the color of the NEXT arrow of first page of the search results
+
+let colorOfFirstPageArrow = () => {
+	if (secondSearchPage.length > 0) {
+		nextArrow.style.color = "white";
+	}
+}
+
+
+//putting a grey color on the search results arrows in case we have more search results or a grey color in case we don't
+
+let whiteColorOnArrows = () => {
+
+
+
+
+	if (secondSearchPage.length > 0) {
+		nextArrow.style.color = "white"
+	}
+}
+
+
+//when the user clicks the arrows
+
 let nextArrow = document.querySelector("#next-arrow");
 let previousArrow = document.querySelector("#previous-arrow");
 
@@ -155,8 +177,19 @@ nextArrow.addEventListener("click", () => {
 		})
 
 		searchPage.innerText = "Page 2";
+		
+		
+		nextArrow.style.color = "grey";
+		
+		previousArrow.style.color = "white"
 
-		previousArrow.style.color = "white";
+
+		if (thirdSearchPage.length > 0) {
+			
+			nextArrow.style.color = "white"
+		}
+
+
 	} else if (thirdSearchPage.length > 0 && searchPage.innerText === "Page 2") {
 		theResults.innerHTML = "";
 
@@ -169,7 +202,14 @@ nextArrow.addEventListener("click", () => {
 
 		})
 
-		searchPage.innerText = "Page 3"
+		searchPage.innerText = "Page 3";
+
+		nextArrow.style.color = "grey";
+
+		if (forthSearchPage.length > 0) {
+			previousArrow.style.color = "white";
+			nextArrow.style.color = "white"
+		}
 
 
 	} else if (forthSearchPage.length > 0 && searchPage.innerText === "Page 3") {
@@ -184,7 +224,14 @@ nextArrow.addEventListener("click", () => {
 
 		})
 
-		searchPage.innerText = "Page 4"
+		searchPage.innerText = "Page 4";
+
+		nextArrow.style.color = "grey";
+
+		if (fifthSearchPage.length > 0) {
+			previousArrow.style.color = "white";
+			nextArrow.style.color = "white"
+		}
 
 
 	} else if (fifthSearchPage.length > 0 && searchPage.innerText === "Page 4") {
@@ -233,7 +280,9 @@ previousArrow.addEventListener("click", () => {
 
 		})
 
-		searchPage.innerText = "Page 3"
+		searchPage.innerText = "Page 3";
+
+		nextArrow.style.color = "white";
 	} else if (searchPage.innerText === "Page 3") {
 
 		theResults.innerHTML = "";
@@ -246,8 +295,10 @@ previousArrow.addEventListener("click", () => {
 
 		})
 
-		searchPage.innerText = "Page 2"
-	} else {
+		searchPage.innerText = "Page 2";
+
+		nextArrow.style.color = "white";
+	} else if(searchPage.innerText === "Page 2") {
 
 		theResults.innerHTML = "";
 
@@ -262,6 +313,8 @@ previousArrow.addEventListener("click", () => {
 		searchPage.innerText = "Page 1";
 
 		previousArrow.style.color = "grey";
+
+		nextArrow.style.color = "white";
 	}
 })
 
@@ -436,7 +489,7 @@ window.onload = () => {
 		fetch(`https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/2771979009559663/${ID}`)
 			.then(result => result.json())
 			.then(data => {
-				console.log(data);
+
 				characterContainer.style.visibility = "visible";
 
 				// adding the name and image of the random character
@@ -471,7 +524,9 @@ window.onload = () => {
 
 
 //RANDOMLY SHOWING THE INTRODUCTION BACKGROUND IMAGES
-let comicImage = document.querySelector("#comic-image");
+
+//for mobile and tblet
+let comicImage = document.querySelector("#intro-image-container");
 
 let randomNum = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -481,11 +536,95 @@ let randomNum = (min, max) => {
 
 let randomImage = () => {
 	setInterval(() => {
-		let num = randomNum(5, 10);
-		comicImage.src = `image/img%20(${num}).jpg`;
+		let num = randomNum(1, 10);
+		comicImage.src= `image/img%20(${num}).jpg`;
 
-	}, 60000)
+	}, 5000)
 
 }
 
 randomImage();
+
+//for desktop
+
+let comicImage2 = document.querySelector("#intro-image-container2");
+
+let randomNum2 = (min, max) => {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+
+
+};
+
+let randomImage2 = () => {
+	setInterval(() => {
+		let num = randomNum(1, 16);
+		comicImage2.style.background= `url("desktop-images/img (${num}).jpg")`;
+
+	}, 30000)
+
+}
+
+
+randomImage2();
+
+
+
+
+
+//SUPERHERO QUOTES
+
+
+
+
+
+let counter = 0;
+
+
+let arrayOfQuotes=['“Our actions have reactions...consequences...things we can never take back.” – Batwoman','“It’s not who I am underneath, but what I do that defines me.” – Batman','“You don’t always need a plan. Sometimes you just need to breathe, trust, let go and see what happens.” – The Joker',' “Everyone’s fighting their own battles, just as you are fighting yours.”  – Wonder Woman','“If there is nothing but what we make in this world, brothers…let us make it good.” – Beta Ray Bill','“If you make yourself more than just a man, if you devote yourself to an ideal, and if they can’t stop you, then you become something else entirely.” – Ra’s Al Ghul',' “With great power, comes great responsibility.” – Spiderman',' “Heroes are made by the path they choose, not the powers they are graced with.”– Iron Man',' “Intelligence is a privilege, and it needs to be used for the greater good of people.”– Dr. Octopus','“I think a hero is an ordinary individual who finds strength to persevere and endure in spite of overwhelming obstacles.” –Superman',' “Life doesn’t give us purpose. We give life purpose.” – The Flash',' “I know what it’s like. To not live up to expectations. To feel like nothing that you do will ever be good enough.” – Green Lantern',' “Just because someone stumbles and loses their path, doesn’t mean they can’t be saved.”– Professor Charles Xavier','“No Matter how bad things get, something good is out there, over the horizon.” – Green Lantern','“I stayed in and studied like a good little nerd. And fifteen years later, I’m one of the greatest minds of the 21st century.” – Mister Fantastic'];
+
+let quote="";
+
+//looping through the letters of each quote
+let typeWriter= () => {
+  if (counter<quote.length) {
+    document.getElementById("comic-quotes").innerHTML+=quote.charAt(counter);
+    counter++;
+    setTimeout(typeWriter,60);
+  }
+}
+
+
+
+
+
+//looping through the quotes
+let i=0;
+
+
+let selectQuote =()=> {
+	if(i===arrayOfQuotes.length) {
+		i=0
+	}
+	quote=arrayOfQuotes[i];
+	
+	
+	typeWriter()
+	
+	if(i<arrayOfQuotes.length) {
+		setTimeout(() => {
+			i++;
+			
+			document.getElementById("comic-quotes").innerHTML="";
+			
+			counter=0;
+			
+			selectQuote()
+		},12000)
+	}
+}
+
+
+
+selectQuote();
+
+

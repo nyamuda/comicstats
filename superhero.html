@@ -9,27 +9,55 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="superhero.css">
 	<link rel="icon" type="image/x-icon" href="" />
+	
 </head>
 
 <body>
 	<header>
-		<p>Comic SuperHeros and Villians</p>
+		<p>ComicStats</p>
 	</header>
-
-	<div>
-		<img id="comic-image" src="image/img%20(7).jpg" alt="superheroes image">
+	
+	<!--background image for mobile view-->
+	<div id="mobile-image-container">
+		<img id="intro-image-container" src="image/img%20(4).jpg">
 	</div>
+	
+	
+	<!--background image for tablet view-->
+	
+	<div id="tablet-image-container">
+		<p id="tablet-image-cover"></p>
+	</div>
+	
+	
+	<!--background image for desktop view-->
+	<div id="intro-image-container2">
+		<p id="image-cover"> </p>
+	</div>
+	
+	
 
 	<main>
+		
 
 		<section id="character-search">
 			<div id="intro-container">
-				<p id="intro-text">Search all SuperHeroes and Villians from all universes. Get the information you've needed: powerstats, biography, appearance and more.</p>
+				<p id="intro-text">Search all SuperHeroes and Villians from all universes. Get the information you've always wanted: powerstats, biography, appearance and more.</p>
 			</div>
+			
+			
+			
+			<div class="border" id="quotes-container">
+				
+				<p id="comic-quotes"></p>
+				
+			</div>
+			
 
 			<form id="search-block">
 
-				<input id="input-search" type="text" placeholder="search" required><button id="search-button" type="submit">Search</button>
+				<input autocomplete="on" id="input-search" type="text" placeholder="search over 500 characters" required><button id="search-button" type="submit">Search</button>
+				<p id="no-search-results"></p>
 				<ul id="the-results">
 
 				</ul>
@@ -99,7 +127,7 @@
 
 	</main>
 	<footer>
-		<p>Comic SuperHeros and Villians</p>
+		<p>ComicStats</p>
 		<p>&#xA9 2020</p>
 	</footer>
 	<script type="text/javascript" src="superhero.js"></script>

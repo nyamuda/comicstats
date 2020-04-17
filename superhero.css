@@ -1,11 +1,12 @@
 body {
 	background-color: #121212;
 	color: white;
+	font-family: 'Acme', sans-serif;
 }
 
 header {
 	width: 98%;
-	background-color: darkslateblue;
+	background-color: #121212;
 	padding-bottom: 1rem;
 	padding-top: 1rem;
 	text-align: center;
@@ -15,12 +16,46 @@ header {
 
 }
 
+
+header {
+	border-style: solid;
+	border-width: 3px;
+	border-image: linear-gradient(to left, rgba(0, 0, 0, 1) 1%, rgba(0, 255, 255, 1) 50%, rgba(0, 0, 0, 1) 100%) 100% 0 100% 0/3px 0 3px 0 stretch;
+	height: 3rem;
+	line-height: 50px;
+	background-color: #222;
+	color: white;
+	text-align: center;
+}
+
 header p {
 	font-size: 1.5rem;
 	color: white;
 	font-weight: bold;
+	margin: auto;
 
 }
+
+#mobile-image-container {
+	max-width: 98%;
+	position: relative;
+	top:0rem;
+	min-height: 15rem;
+	margin: auto;
+}
+
+#intro-image-container  {
+	max-width:100%;
+	display: block;
+	height: auto;
+	
+}
+
+#tablet-image-container, #intro-image-container2 {
+	display: none;
+}
+
+
 
 #comic-image {
 	max-width: 100%;
@@ -29,6 +64,56 @@ header p {
 	position: relative;
 	top: 1rem;
 	margin: auto;
+}
+
+#comic-image2 {
+	max-width: 100%;
+	height: auto;
+	position: relative;
+	top: -1rem;
+	margin: auto;
+	display: none;
+}
+
+#comic-quotes {
+	width: 95%;
+	position: relative;
+	text-align: center;
+	margin: auto;
+	color: lightblue;
+	font-family: 'Amiri', serif;
+	font-size: 1.3rem;
+	padding-top: 0rem;
+}
+
+.border {
+	display: flex;
+	flex-direction: column;
+	justify-content:space-evenly;
+	position: relative;
+	margin: auto;
+	width: 90%;
+	height:8rem;
+	top: 7rem;
+	background: linear-gradient(90deg, #FFFAFA 50%, transparent 50%), linear-gradient(90deg, #FFFAFA 50%, transparent 50%), linear-gradient(0deg, #FFFAFA 50%, transparent 50%), linear-gradient(0deg, #FFFAFA 50%, transparent 50%);
+	background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+	background-size: 15px 4px, 15px 4px, 4px 15px, 4px 15px;
+	padding: 10px;
+	animation: border-dance 4s infinite linear;
+}
+
+@keyframes border-dance {
+	0% {
+		background-position: 0 0, 100% 100%, 0 100%, 100% 0;
+	}
+
+	100% {
+		background-position: 100% 0, 0 100%, 0 0, 100% 100%;
+	}
+}
+
+.desk-border {
+	display: none;
 }
 
 #intro-container {
@@ -42,7 +127,6 @@ header p {
 	font-size: 1.5rem;
 	width: 98%;
 	margin: auto;
-
 }
 
 
@@ -50,6 +134,7 @@ header p {
 	margin-left: 1rem;
 	cursor: pointer;
 }
+
 .desktop-lines {
 	display: none;
 }
@@ -65,21 +150,21 @@ header p {
 #character-container {
 	width: 100%;
 	position: relative;
-	top: 7rem;
-	display:block;
+	top: 9rem;
+	display: block;
 	visibility: none;
 
 }
 
 #all-information {
-		visibility:hidden;
-		
-	}
+	visibility: hidden;
+
+}
 
 #character-img {
-	width:auto;
+	width: auto;
 	display: block;
-	height:20rem;
+	height: 20rem;
 	margin: auto;
 }
 
@@ -92,18 +177,18 @@ header p {
 #search-block {
 	width: 100%;
 	position: relative;
-	top: 4rem;
+	top: 9rem;
 	margin: auto;
 	text-align: center;
-	background: url("image/img%20(4).jpg");
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	height: auto;
+	height: 10rem;
+	;
 }
 
 #loader {
 	border: 10px solid lightgray;
-	top: 5rem;
+	top: 1rem;
 	border-top: 10px solid royalblue;
 	border-radius: 50%;
 	position: relative;
@@ -114,7 +199,7 @@ header p {
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	margin: auto;
-	display:block;
+	display: block;
 	visibility: hidden;
 }
 
@@ -134,7 +219,6 @@ header p {
 	height: 2rem;
 	width: 70%;
 	text-indent: 1rem;
-	
 }
 
 #search-button {
@@ -142,7 +226,7 @@ header p {
 	height: 2.2rem;
 	width: 5rem;
 	margin-left: -1.5rem;
-	background-color: royalblue;
+	background-color: rgba(0, 155, 235, 1);
 	color: aliceblue;
 	transition: all 0.5s ease-in-out;
 	cursor: pointer;
@@ -150,7 +234,7 @@ header p {
 }
 
 #search-button:hover {
-	background-color: darkblue;
+	background-color: rgba(0, 90, 150, 1);
 }
 
 #the-results {
@@ -158,8 +242,13 @@ header p {
 	margin: auto;
 	text-align: center;
 	margin-top: 1rem;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color:;
 	column-count: 2;
+	height: 100%;
+}
+
+#no-search-results {
+	display: none;
 }
 
 #arrows-block {
@@ -168,18 +257,20 @@ header p {
 	justify-content: space-evenly;
 	align-items: center;
 	visibility: hidden;
-	background-color: rgba(0,0,0,0.5)
+	background-color: rgba(0, 0, 0, 0.5)
 }
 
-#previous-arrow, #next-arrow {
-	font-size:1.5rem;
+#previous-arrow,
+#next-arrow {
+	font-size: 1.5rem;
 	cursor: pointer;
 }
 
 #next-arrow:hover {
 	color: darkslateblue;
-	
+
 }
+
 #previous-arrow:hover {
 	color: darkslateblue;
 }
@@ -192,8 +283,9 @@ header p {
 	line-height: 2rem;
 	cursor: pointer;
 }
+
 #the-results li:hover {
-	color: darkslateblue;
+	color:rgba(0, 255, 255, 1);
 	text-decoration: underline;
 }
 
@@ -215,26 +307,165 @@ header p {
 
 footer {
 	position: relative;
-	background-color:darkslateblue;
 	color: aliceblue;
 	width: 100%;
 	height: 5rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	text-align: center;
-	top:11rem;
+	top:1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	border-top: 2px dotted rgba(0, 255, 255,0.8);
+	border-bottom: 2px dotted rgba(0, 255, 255,0.8);
 }
 
 
-@media (min-width:768px) {
-	body {
-		background-color:white;
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width:768px) and (max-width:1023.9px) {
+
+
+	header {
+		border-bottom-left-radius: 0px;
+		border-top-right-radius: 0px;
+		background-color: #121212;
+
+
+
 	}
+
+	header {
+		border-style: solid;
+		border-width: 3px;
+		border-image: linear-gradient(to left, rgba(0, 0, 0, 1) 1%, rgba(0, 255, 255, 1) 50%, rgba(0, 0, 0, 1) 100%) 100% 0 100% 0/3px 0 3px 0 stretch;
+		height: 3rem;
+		line-height: 50px;
+		background-color: #222;
+		color: white;
+		text-align: center;
+	}
+
+	header p {
+		margin: auto;
+	}
+
+
+	
+
+
+	#mobile-image-container {
+		display: none;
+
+	}
+
+	#tablet-image-cover {
+		height: 30rem;
+		background-color: rgba(0, 0, 0, 0.6);
+		display: block;
+		width: 100%;
+	}
+
+
+	#tablet-image-container {
+		display: block;
+		position: relative;
+		top: -1rem;
+		background: url("tablet-images/img%20(2).jpg");
+		max-height: 30rem;
+		width: 98%;
+		margin: auto;
+	}
+
+	.border {
+		display: block;
+		position: absolute;
+		top:14rem;
+		width: 24rem;
+		background: none;
+		left: 2rem;
+	}
+
+	#comic-quotes {
+		color: white;
+		font-size: 1.5rem;
+
+	}
+	
+	#intro-text {
+		width: 80%;
+		text-align: center;
+	}
+	
+	#search-block {
+		width: 70%;
+	}
+	
+	#character-container {
+		width: 70%;
+		margin: auto;
+	}
+	.info-blocks {
+		background-color: inherit;
+		border: none;
+		margin-top: 0.5rem;
+
+	}
+	.desktop-lines {
+		display: block;
+	}
+
+	
+}
+
+
+
+
+
+@media (min-width:1024px) {
+	body {
+		background-color: white;
+
+	}
+
+	header {
+		border-bottom-left-radius: 0px;
+		border-top-right-radius: 0px;
+		background-color: #121212;
+
+
+
+	}
+
+	header {
+		border-style: solid;
+		border-width: 3px;
+		border-image: linear-gradient(to left, rgba(0, 0, 0, 1) 1%, rgba(0, 255, 255, 1) 50%, rgba(0, 0, 0, 1) 100%) 100% 0 100% 0/3px 0 3px 0 stretch;
+		height: 3rem;
+		line-height: 50px;
+		background-color: #222;
+		color: white;
+		text-align: center;
+	}
+
+	header p {
+		margin: auto;
+	}
+
+
 	main {
 		position: relative;
 		display: flex;
@@ -243,34 +474,72 @@ footer {
 		width: 100%;
 		height: auto;
 		top: 3rem;
-		background-color:rgba(32,32,32,0.9);
+		background-color: #121212;
 		padding-bottom: 2rem;
 		padding-top: 2rem;
-		
+
 
 	}
 
-	#intro-container {
-		top: 0rem;
-		
+
+	#mobile-image-container {
+		display: none;
+
 	}
-	#intro-text {
+
+	#image-cover {
+		height: 40rem;
+		background-color: rgba(0, 0, 0, 0.6);
+		display: block;
+		width: 100%;
 	}
-	
-	#comic-image {
-		width:80%;
+
+	#intro-image-container2 {
+		display: block;
+		position: relative;
+		top: -1rem;
+		background: url("desktop-images/img (5).jpg");
+		max-height: 40rem;
+		width: 98%;
 		margin: auto;
 	}
 
-	#search-block {
-		top: -1rem;
+	.border {
+		display: block;
+		position: absolute;
+		top: -40rem;
+		width: 23rem;
 		background: none;
-		height: 12rem;
-		
+	}
+
+	#comic-quotes {
+		color: white;
+		font-size: 1.5rem;
 
 	}
-	#input-search {
+
+	.desk-border {
+		display: block;
+		width: 96.7%;
+		height: 40rem;
+		background-color: rgba(0, 0, 0, 0.5);
+		position: absolute;
+		top: 4.3rem;
+		margin-left: 1%;
 	}
+
+	#search-block {
+		top: 2rem;
+		background: none;
+		height: 12rem;
+
+
+	}
+
+	#input-search {
+		width: 20rem;
+	}
+
 	#the-results {
 		background-color: inherit;
 	}
@@ -278,7 +547,7 @@ footer {
 	#loader {
 		display: block;
 		top: -8rem;
-		visibility:hidden;
+		visibility: hidden;
 	}
 
 	#character-container {
@@ -286,55 +555,62 @@ footer {
 		flex-direction: column;
 		width: 50%;
 		top: 0rem;
-		
+
 
 	}
 
 	#character-img {
-		max-width:45%;
+		max-width: 45%;
 	}
+
 	#character-name-image {
 		display: block;
 	}
+
 	.info-blocks {
-		background-color:inherit;
-		border:none;
+		background-color: inherit;
+		border: none;
 		margin-top: 0.5rem;
-		
+
 	}
+
 	.desktop-lines {
 		display: block;
 	}
+
 	.character-head span {
 		display: none;
 	}
-	
+
 	.character-head {
 		font-size: 1.5rem;
 	}
+
 	.character-description {
 		display: block;
 	}
-	#all-information {
-		
-		
-	}
+
+	#all-information {};
+
 	#character-search {
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		width: 30%;
-		height: 30rem;
-		justify-content:space-between;
+		height: 32rem;
+		justify-content: space-between;
 		top: 0rem;
 		padding: 1rem;
 		background-color:;
 		border-radius: 10px;
-		border: 1px solid;
-		box-shadow: -4px -4px 3px 3px white;
+		border: 2px solid white;
 	}
+
 	footer {
-		top:11rem;
+		top: 11rem;
+		background-color: #121212;
+		border-bottom: none;
+		border-top: none;
 	}
 
 }
