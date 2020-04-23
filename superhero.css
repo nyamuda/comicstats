@@ -1,7 +1,7 @@
 body {
 	background-color: #121212;
 	color:aliceblue;
-	font-family: 'Acme', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -82,7 +82,7 @@ header p {
 	text-align: center;
 	margin: auto;
 	color: lightblue;
-	font-family: 'Amiri', serif;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
 	font-size: 1.3rem;
 	padding-top: 0rem;
 }
@@ -393,6 +393,7 @@ footer {
 		max-height: 30rem;
 		width: 98%;
 		margin: auto;
+		background-color: rgb(32,32,32);
 	}
 
 	.border {
@@ -524,6 +525,7 @@ footer {
 		max-height: 40rem;
 		width: 98%;
 		margin: auto;
+		background-color: rgb(32,32,32)
 	}
 
 	#intro-text {
