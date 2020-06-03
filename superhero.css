@@ -1,21 +1,22 @@
 body {
 	background-color: #121212;
-	color:aliceblue;
+	color: aliceblue;
 	font-family: 'Roboto', sans-serif;
 }
 
-header {
-	width: 98%;
-	background-color: #121212;
-	padding-bottom: 1rem;
-	padding-top: 1rem;
-	text-align: center;
-	margin: auto;
-	border-bottom-left-radius: 20px;
-	border-top-right-radius: 20px;
+
+#coros {
+	position: relative;
+	top: 0.1rem;
+	width: 100%;
 
 }
 
+.vueperslides__bullet .default {
+	color: #ffffff;
+}
+
+#slide-show {}
 
 header {
 	border-style: solid;
@@ -24,8 +25,14 @@ header {
 	height: 3rem;
 	line-height: 50px;
 	background-color: #222;
-	color:aliceblue;
+	color: aliceblue;
 	text-align: center;
+	width: 98%;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	margin: auto;
+	border-bottom-left-radius: 20px;
+	border-top-right-radius: 20px;
 }
 
 header p {
@@ -36,45 +43,7 @@ header p {
 
 }
 
-#mobile-image-container {
-	max-width: 98%;
-	position: relative;
-	top: 0rem;
-	min-height: 15rem;
-	margin: auto;
-}
 
-#intro-image-container {
-	max-width: 100%;
-	display: block;
-	height: auto;
-
-}
-
-#tablet-image-container,
-#intro-image-container2 {
-	display: none;
-}
-
-
-
-#comic-image {
-	max-width: 100%;
-	display: block;
-	height: auto;
-	position: relative;
-	top: 1rem;
-	margin: auto;
-}
-
-#comic-image2 {
-	max-width: 100%;
-	height: auto;
-	position: relative;
-	top: -1rem;
-	margin: auto;
-	display: none;
-}
 
 #comic-quotes {
 	width: 95%;
@@ -87,40 +56,21 @@ header p {
 	padding-top: 0rem;
 }
 
-.border {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	position: relative;
-	margin: auto;
-	width: 90%;
-	height: 8rem;
-	top: 6rem;
-	background: linear-gradient(90deg, #FFFAFA 50%, transparent 50%), linear-gradient(90deg, #FFFAFA 50%, transparent 50%), linear-gradient(0deg, #FFFAFA 50%, transparent 50%), linear-gradient(0deg, #FFFAFA 50%, transparent 50%);
-	background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-	background-size: 15px 4px, 15px 4px, 4px 15px, 4px 15px;
-	padding: 10px;
-	animation: border-dance 4s infinite linear;
-}
-
-@keyframes border-dance {
-	0% {
-		background-position: 0 0, 100% 100%, 0 100%, 100% 0;
-	}
-
-	100% {
-		background-position: 100% 0, 0 100%, 0 0, 100% 100%;
-	}
-}
 
 .desk-border {
 	display: none;
 }
 
+.border2 {
+	width: 100%;
+	margin-top: 3rem;
+	height: 5rem;
+}
+
 #intro-container {
 	width: 100%;
 	position: relative;
-	top:1rem;
+	top: 1rem;
 }
 
 #intro-text {
@@ -151,7 +101,7 @@ header p {
 #character-container {
 	width: 100%;
 	position: relative;
-	top: 10rem;
+	top: 1rem;
 	display: block;
 	visibility: none;
 
@@ -183,8 +133,8 @@ header p {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	height: 17rem;
-	top: 12rem;
-	border:none;
+	top: 2rem;
+	border: none;
 	background-color: rgba(32, 32, 32, 1);
 }
 
@@ -296,11 +246,11 @@ header p {
 
 
 .info-blocks {
-	border-bottom:groove;
+	border-bottom: groove;
 
 	background-color: rgba(32, 32, 32, 0.9);
 	color: aliceblue;
-	padding-top:0.5rem;
+	padding-top: 0.5rem;
 }
 
 #power-block,
@@ -327,19 +277,18 @@ footer {
 	justify-content: center;
 }
 
+.vueperslides--fixed-height {
+	height: 20rem;
+}
 
+@media (max-width:380px) {
+	.vueperslides__bullet .default {
+		display: none;
+	}
 
+	;
 
-
-
-
-
-
-
-
-
-
-
+}
 
 @media (min-width:768px) and (max-width:1023.9px) {
 
@@ -348,6 +297,7 @@ footer {
 		border-bottom-left-radius: 0px;
 		border-top-right-radius: 0px;
 		background-color: #121212;
+		width: 99.5%;
 
 
 
@@ -368,42 +318,14 @@ footer {
 		margin: auto;
 	}
 
-
-
-
-
-	#mobile-image-container {
-		display: none;
-
-	}
-
-	#tablet-image-cover {
-		height: 30rem;
-		background-color: rgba(0, 0, 0, 0.6);
-		display: block;
-		width: 100%;
-	}
-
-
-	#tablet-image-container {
-		display: block;
-		position: relative;
-		top: -1rem;
-		background: url("tablet-images/img%20(5).jpg");
-		max-height: 30rem;
-		width: 98%;
+	.border2 {
+		width: 80%;
 		margin: auto;
-		background-color: rgb(32,32,32);
+		margin-top: 2rem;
 	}
 
-	.border {
-		display: block;
-		position: absolute;
-		top: 14rem;
-		width: 24rem;
-		background: none;
-		left: 5rem;
-	}
+
+
 
 	#comic-quotes {
 		color: white;
@@ -419,7 +341,7 @@ footer {
 	#search-block {
 		width: 70%;
 		position: relative;
-		top: 6rem;
+		top:3rem;
 		border: groove;
 		background-color: rgba(32, 32, 32, 1);
 		height: 17rem;
@@ -437,7 +359,7 @@ footer {
 	#character-container {
 		width: 70%;
 		margin: auto;
-		top:7rem;
+		top: 7rem;
 	}
 
 	.info-blocks {
@@ -451,9 +373,12 @@ footer {
 		display: block;
 	}
 
+	.vueperslides--fixed-height {
+		height: 30rem;
+	}
+
 
 }
-
 
 
 
@@ -468,6 +393,7 @@ footer {
 		border-bottom-left-radius: 0px;
 		border-top-right-radius: 0px;
 		background-color: #121212;
+		width: 99.5%;
 
 
 
@@ -496,7 +422,7 @@ footer {
 		justify-content: space-evenly;
 		width: 100%;
 		height: auto;
-		top: 3rem;
+		top: 10rem;
 		background-color: #121212;
 		padding-bottom: 2rem;
 		padding-top: 2rem;
@@ -505,45 +431,29 @@ footer {
 	}
 
 
-	#mobile-image-container {
-		display: none;
-
-	}
-
-	#image-cover {
-		height: 40rem;
-		background-color: rgba(0, 0, 0, 0.6);
-		display: block;
-		width: 100%;
-	}
-
-	#intro-image-container2 {
-		display: block;
-		position: relative;
-		top: -1rem;
-		background: url("desktop-images/img (18).jpg");
-		max-height: 40rem;
-		width: 98%;
-		margin: auto;
-		background-color: rgb(32,32,32)
-	}
-
 	#intro-text {
 		width: 95%;
 	}
 
-	.border {
+	.border2 {
 		display: block;
+		width: 98%;
 		position: absolute;
-		top: -40rem;
-		width: 27rem;
-		background: none;
-		left: 5rem;
+		margin-top: -9rem;
+	}
+
+	.border {
+		display: none;
+
+
 	}
 
 	#comic-quotes {
-		color: aliceblue;
+		color: #121212;
 		font-size: 1.5rem;
+		position: relative;
+		margin: auto;
+		width: 40%;
 
 	}
 
@@ -564,9 +474,9 @@ footer {
 
 
 	}
-	
+
 	#arrows-block {
-		top:0rem;
+		top: 0rem;
 	}
 
 
@@ -641,6 +551,10 @@ footer {
 		background-color: #121212;
 		border-bottom: none;
 		border-top: none;
+	}
+
+	.vueperslides--fixed-height {
+		height: 38rem;
 	}
 
 }

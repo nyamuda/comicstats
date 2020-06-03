@@ -2,134 +2,232 @@
 <html lang="">
 
 <head>
-	<meta charset="utf-8">
-	<title>ComicStats - Superheros and Villains</title>
-	<meta name="author" content="Pierce Nyamuda">
-	<meta name="description" content="A website to search all superheros and villains from all universes">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="superhero.css">
-	<link rel="icon" type="image/x-icon" href="" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto|Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>ComicStats - Superheros and Villains</title>
+    <meta name="author" content="Pierce Nyamuda">
+    <meta name="description" content="A website to search all superheros and villains from all universes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="superhero.css">
+    <link rel="icon" type="image/x-icon" href="" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vueperslides"></script>
+    <link href="https://unpkg.com/vueperslides/dist/vueperslides.css" rel="stylesheet">
 </head>
 
 <body>
-	<header>
-		<p>ComicStats</p>
-	</header>
-	
-	<!--background image for mobile view-->
-	<div id="mobile-image-container">
-		<img id="intro-image-container" src="image/img%20(4).jpg">
-	</div>
-	
-	
-	<!--background image for tablet view-->
-	
-	<div id="tablet-image-container">
-		<p id="tablet-image-cover"></p>
-	</div>
-	
-	
-	<!--background image for desktop view-->
-	<div id="intro-image-container2">
-		<p id="image-cover"> </p>
-	</div>
-	
-	
+    <header>
+        <p>ComicStats</p>
+    </header>
 
-	<main>
+
+    <div id="coros">
+
+        <div id="app">
+            <div id="slide-show">
+
+                <vueper-slides lazy lazy-load-on-drag fixed-height="true" autoplay>
+                    <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide.image">
+                        <template v-slot:loader>
+                            <i class="icon icon-loader spinning"></i>
+                            <span>Loading...</span>
+                        </template>
+                    </vueper-slide>
+                </vueper-slides>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <main>
 		
+		<div>
+			 
+			  <div class="border2">
 
-		<section id="character-searching">
-			<div id="intro-container">
-				<p id="intro-text">Search all SuperHeroes and Villains from all universes. Get the information you've always wanted: powerstats, biography, appearance and more.</p>
-			</div>
-			
-			
-			
-			<div class="border" id="quotes-container">
-				
-				<p id="comic-quotes"></p>
-				
-			</div>
-			
+                <p id="comic-quotes"></p>
 
-			<form id="search-block">
-
-				<input autocomplete="on" id="input-search" type="text" placeholder="search over 500 characters" required><button id="search-button" type="submit">Search</button>
-				<p id="no-search-results"></p>
-				<ul id="the-results">
-
-				</ul>
-				
-				<div id="arrows-block">
-					
-					<span id="previous-arrow">&#9668;</span><p id="page-list"></p><span id="next-arrow">&#9658;</span>
-				
-				</div>
-			</form>
-			<div id="loader">
-			</div>
-		</section>
+            </div>
 		
+		
+		
+		</div>
 
-		<section id="character-container">
 
-			<div id="character-name-image">
-				<img src="" id="character-img" alt="image of a character">
-				<p id="character-name"></p>
-			</div>
-
-			<div id="all-information">
-
-				<div class="info-blocks">
-					<p class="character-head"><span class="collapse-head">+</span> PowerStats</p>
-					<hr class="desktop-lines">
-					<div id="power-block" class="character-description"></div>
-				</div>
-
-				<div class="info-blocks">
-
-					<p class="character-head"><span>+</span> Biography</p>
-					<hr class="desktop-lines">
-					<div id="biography-block" class="character-description"></div>
-
-				</div>
-
-				<div class="info-blocks">
-
-					<p class="character-head"><span>+</span> Appearance</p>
-					<hr class="desktop-lines">
-					<div id="appearance-block" class="character-description"></div>
-
-				</div>
-
-				<div class="info-blocks">
-
-					<p class="character-head"><span>+</span> Work</p>
-					<hr class="desktop-lines">
-					<div id="work-block" class="character-description"></div>
-
-				</div>
-
-				<div class="info-blocks">
-
-					<p class="character-head"><span>+</span> Connections</p>
-					<hr class="desktop-lines">
-					<div id="connections-block" class="character-description"></div>
-
-				</div>
-
-			</div>
-
-		</section>
+        <section id="character-searching">
+            <div id="intro-container">
+                <p id="intro-text">Search all SuperHeroes and Villains from all universes. Get the information you've always wanted: powerstats, biography, appearance and more.</p>
+            </div>
 
 
 
-	</main>
-	<footer>
-		<p>ComicStats</p>
-		<p>&#xA9 2020</p>
-	</footer>
-	<script type="text/javascript" src="superhero.js"></script>
+
+
+            <form id="search-block">
+
+                <input autocomplete="on" id="input-search" type="text" placeholder="search over 500 characters" required><button id="search-button" type="submit">Search</button>
+                <p id="no-search-results"></p>
+                <ul id="the-results">
+
+                </ul>
+
+                <div id="arrows-block">
+
+                    <span id="previous-arrow">&#9668;</span>
+                    <p id="page-list"></p><span id="next-arrow">&#9658;</span>
+
+                </div>
+            </form>
+            <div id="loader">
+            </div>
+        </section>
+
+
+        <section id="character-container">
+
+            <div id="character-name-image">
+                <img src="" id="character-img" alt="image of a character">
+                <p id="character-name"></p>
+            </div>
+
+            <div id="all-information">
+
+                <div class="info-blocks">
+                    <p class="character-head"><span class="collapse-head">+</span> PowerStats</p>
+                    <hr class="desktop-lines">
+                    <div id="power-block" class="character-description"></div>
+                </div>
+
+                <div class="info-blocks">
+
+                    <p class="character-head"><span>+</span> Biography</p>
+                    <hr class="desktop-lines">
+                    <div id="biography-block" class="character-description"></div>
+
+                </div>
+
+                <div class="info-blocks">
+
+                    <p class="character-head"><span>+</span> Appearance</p>
+                    <hr class="desktop-lines">
+                    <div id="appearance-block" class="character-description"></div>
+
+                </div>
+
+                <div class="info-blocks">
+
+                    <p class="character-head"><span>+</span> Work</p>
+                    <hr class="desktop-lines">
+                    <div id="work-block" class="character-description"></div>
+
+                </div>
+
+                <div class="info-blocks">
+
+                    <p class="character-head"><span>+</span> Connections</p>
+                    <hr class="desktop-lines">
+                    <div id="connections-block" class="character-description"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+    <footer>
+        <p>ComicStats</p>
+        <p>&#xA9 2020</p>
+    </footer>
+    <script type="text/javascript" src="superhero.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                slides: [{
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(4).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(1).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(2).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(3).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(5).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(6).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(7).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(8).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(9).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(10).jpg'
+                    },
+                          {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(11).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(12).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(13).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(15).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(16).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(17).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(18).jpg'
+                    },
+                    {
+                        // You can also provide a URL for the image.
+                        image: 'desktop-images/img%20(14).jpg'
+                    },
+                ],
+            }
+        })
+    </script>
+    
+    
+   
+
 </body></html>
