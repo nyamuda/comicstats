@@ -140,7 +140,7 @@ header p {
 
 #loader {
 	border: 10px solid lightgray;
-	top: -1rem;
+	top: -10rem;
 	border-top: 10px solid royalblue;
 	border-radius: 50%;
 	position: relative;
@@ -349,7 +349,7 @@ footer {
 	}
 
 	#loader {
-		top: -7rem;
+		top: -9rem;
 	}
 
 	#arrows-block {
